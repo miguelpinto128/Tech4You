@@ -1,0 +1,31 @@
+<body>
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent header-scrolled">
+    <div class="container d-flex align-items-center justify-content-between">
+      <div class="logo">
+        <img src="../../assets/imagens/logo_navbar.png" style="height:100px;" alt="">
+
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" (click)="open(content)">Logout</a></li>
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+</body>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="text-align: center;" id="modal-basic-title">Tem a certeza que pretende sair?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close('Save click') "
+      routerLink="">Confirmar</button>
+  </div>
+</ng-template>

@@ -1,0 +1,177 @@
+<app-admin-navbar></app-admin-navbar>
+<app-menu></app-menu>
+<section id="hero" class="d-flex  flex-column justify-content-end align-items-center">
+  <div id="dados" class="container padding">
+    <div class="row ">
+      <button (click)="open2(content2)" style="width: 100%; height:45px;" class="btn btn-success">Adicionar</button>
+      <table class="table align-middle table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID Funcionário</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+          </tr>
+        </thead>
+
+
+        <tbody>
+          <tr *ngFor="let data of data | paginate: { itemsPerPage: 10, currentPage: p }">
+            <input scope="row" id="serviceIdd" disabled name="serviceIdd" placeholder="{{ data?.id }}" #serviceIdd>
+            <td>{{ data?.name }}</td>
+            <td>{{ data?.email }}</td>
+            <td>
+              <button type="button" (click)="open(content, serviceIdd.placeholder, content3)">
+                <i class="bi bi-pencil"></i>
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger btn-sm px-3" (click)="delete(serviceIdd.placeholder, content3)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <pagination-controls previousLabel="" nextLabel="" (pageChange)="p = $event"></pagination-controls>
+  </div>
+</section>
+
+
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="text-align: center;" id="modal-basic-title">Registar Funcionário</h4>
+  </div>
+  <section id="hero" class="d-flex  flex-column justify-content-end align-items-center">
+    <div id="dados" class="container padding">
+      <div class="row ">
+        <div class="col-xl-12">
+          <div class="card">
+            <h3 class="text-center mb-4">Dados do Funcionário</h3>
+            <form class="form-card" #msgForm="ngForm" (ngSubmit)="sendMessage2(msgForm, content3)">
+              <div class="row justify-content-between text-left">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">Nome</label>
+                  <input type="text" id="name" name="name" #name ngModel placeholder="">
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">Morada</label>
+                  <input type="text" id="address" name="address" #address ngModel placeholder="">
+                </div>           
+              </div>
+
+              <div class="row justify-content-between text-left">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">Email</label>
+                  <input type="email" id="email" name="email" placeholder="" #email ngModel>
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">Password</label>
+                  <input type="password" id="password" name="password" placeholder="" #password ngModel>
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">Data de Nascimento</label>
+                  <input type="date" id="BirhDate" name="BirhDate" #BirhDate ngModel placeholder="">
+                </div>
+              </div>
+              <button type="submit" value="Submit" style="width: 100%; height:45px"
+                class="btn btn-success">Confirmar</button>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click') ">Cancelar</button>
+
+  </div>
+</ng-template>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="text-align: center;" id="modal-basic-title">ID Funcionário - {{ clickData?.id }}</h4>
+  </div>
+  <section id="hero" class="d-flex  flex-column justify-content-end align-items-center">
+    <div id="dados" class="container padding">
+      <div class="row ">
+        <div class="col-xl-12">
+          <div class="card">
+            <h3 class="text-center mb-4">Dados do Funcionário</h3>
+            <form class="form-card"  #msgForm="ngForm" (ngSubmit)="sendMessage(msgForm, id.value, content3)">
+              <div class="row justify-content-between text-left">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">ID</label>
+                  <input type="text" id="id"  name="id" value="{{ clickData?.id }}" placeholder="{{ clickData?.id }}" #id ngModel >
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">Nome</label>
+                  <input type="text" id="name" name="name" #name ngModel
+                  placeholder="{{ clickData?.name }}">
+                </div>
+
+               
+              </div>
+
+              <div class="row justify-content-between text-left">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">Email</label>
+                  <input type="email" id="email" name="email"  #email ngModel 
+                  placeholder="{{ clickData?.email }}">
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">Password</label>
+                  <input type="password" id="password" name="password" #password ngModel 
+                  placeholder="">
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">Morada</label>
+                  <input type="text" id="address" name="address"  #address ngModel placeholder="{{ clickData?.address }}">
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3">Data de Nascimento</label>
+                  <input type="date" value="{{ clickData?.BirhDate}}" id="data" name="BirhDate" name="BirhDate" placeholder="{{ clickData?.BirhDate }}" #BirhDate ngModel>
+                </div>
+              </div>
+
+              <button type="submit" value="Submit" style="width: 100%; height:45px" class="btn btn-success">Editar</button>
+           
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+   
+  </section>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click') ">Cancelar</button>
+  </div>
+</ng-template>
+
+<ng-template #content3 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="text-align: center;" id="modal-basic-title">Error {{ errorStatus }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    
+  </div>
+  <div style="padding-left: 5px;">
+    <p>{{ errorMessage1 }}</p>    
+  </div>
+
+  <div class="modal-footer">
+    
+    <button type="button" class="btn btn-outline-danger" (click)="modal.close('Save click')">Confirmar</button>
+  </div>
+</ng-template>

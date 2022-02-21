@@ -1,0 +1,58 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "jest": {
+    "coverageTreshold": {
+      "global": {
+        "statements": 80,
+        "branches": 80,
+        "functions": 80,
+        "line": 80
+      }
+    }
+  },
+"scripts": {
+  "start": "node src/server.js",
+  "lint": "eslint src/** test/** --fix",
+  "secure-mode": "jest --watchAll --runInBand --verbose=true",
+  "test": "jest  --coverage --runInBand --forceExit"
+},
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "keywords": [
+    "Tech4You"
+  ],
+  "author": "Marco Oliveira & Miguel Pinto",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "jest": "23.6.0",
+    "supertest": "3.3.0"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "1.18.3",
+    "consign": "0.1.6",
+    "cors": "^2.8.5",
+    "express": "4.16.4",
+    "husky": "1.2.0",
+    "jwt-simple": "0.5.5",
+    "knex": "0.15.2",
+    "passport": "0.4.0",
+    "passport-jwt": "4.0.0",
+    "pg": "^8.7.1",
+    "sqlite3": "^5.0.2",
+    "uuidv4": "2.0.0",
+    "winston": "3.1.0"
+  }
+}

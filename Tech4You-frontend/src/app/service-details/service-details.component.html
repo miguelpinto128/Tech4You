@@ -1,0 +1,146 @@
+<app-navbar></app-navbar>
+<section id="hero" class="d-flex  flex-column justify-content-end align-items-center">
+  <div id="dados" class="container padding">
+    <div class="row ">
+      <div class="col-xl-6">
+        <div class="card">
+          <h3 class="text-center mb-4">Dados do Cliente</h3>
+          <form class="form-card">
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Nome</label>
+                <input type="text" id="nome" disabled name="nome" placeholder="{{ dataClient?.name }}">
+              </div>
+
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Morada</label>
+                <input type="text" id="morada" disabled name="morada" placeholder="{{ dataClient?.address }}">
+              </div>
+            </div>
+
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Data Nascimento</label>
+                <input type="text" id="dnascimento" disabled name="dnascimento"
+                  placeholder="{{ dataClient?.BirhDate }}">
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Telemóvel</label>
+                <input type="text" id="telemovel" disabled name="telemovel" placeholder="{{ dataClient?.phoneNumber }}">
+              </div>
+            </div>
+
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Email</label>
+                <input type="text" id="email" disabled name="email" placeholder="{{ dataClient?.email }}">
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Nif</label>
+                <input type="text" id="nif" disabled name="nif" placeholder="{{ dataClient?.nif }}">
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+
+      </div>
+
+      <div class="col-xl-6">
+        <div class="card">
+          <h3 class="text-center mb-4">Dados do Equipamento</h3>
+          <form class="form-card">
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Tipo do Equipamento</label>
+                <input type="text" id="tequipamento" disabled name="tequipamento"
+                  placeholder="{{ dataEquipment?.typeEquipment }}">
+              </div>
+
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Número Série</label>
+                <input type="text" id="nSerie" disabled name="nSerie" placeholder="{{ dataEquipment?.serialNumber }}">
+              </div>
+            </div>
+
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Marca</label>
+                <input type="text" id="marca" disabled ame="marca" placeholder="{{ dataEquipment?.brand }}">
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Acessórios</label>
+                <input type="text" id="acessorios" disabled name="acessorios"
+                  placeholder="{{ dataEquipment?.accessories }}">
+              </div>
+            </div>
+
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Danos</label>
+                <input type="text" id="danos" disabled name="danos" placeholder="{{ dataEquipment?.damages }}">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-xl-12">
+        <div class="card">
+          <h3 class="text-center mb-4">Dados da Assistência</h3>
+          <form class="form-card">
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Estado</label>
+                <input type="text" id="tequipamento" disabled name="tequipamento" placeholder=" {{ data?.status }}">
+              </div>
+
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Descrição</label>
+                <input type="text" id="nSerie" disabled name="nSerie" placeholder=" {{ data?.description }}">
+              </div>
+            </div>
+
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Observações</label>
+                <input type="text" id="marca" disabled name="marca" placeholder=" {{ data?.observations }}">
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Testes Realizados</label>
+                <input type="text" id="acessorios" disabled name="acessorios" placeholder="{{ data?.tests }}">
+              </div>
+            </div>
+
+            <div class="row justify-content-between text-left">
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Novos Componentes</label>
+                <input type="text" id="danos" disabled name="danos" placeholder="{{ data?.components }}">
+              </div>
+              <div class="form-group col-sm-6 flex-column d-flex">
+                <label class="form-control-label px-3">Técnicos Responsáveis</label>
+                <input type="text" id="danos" disabled name="danos" placeholder="{{ data?.technician_id }}">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" style="text-align: center;" id="modal-basic-title">Error {{ errorStatus }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    
+  </div>
+  <div style="padding-left: 5px;">
+    <p>{{ errorMessage1 }}</p>    
+  </div>
+</ng-template>

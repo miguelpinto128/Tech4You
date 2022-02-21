@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for api/src/app.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">api/src</a> app.js
+    </h1>
+    <div class='clearfix'>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66</td><td class="line-coverage quiet"><span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">62x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const app = require('express')();
+const consign = require('consign');
+const cors = require('cors');
+const knex = require('knex');
+const winston = require('winston');
+const uuid = require('uuidv4');
+&nbsp;
+const knexfile = require('../knexfile');
+&nbsp;
+// app.db = knex(knexfile[process.env.NODE_ENV]);
+app.db = knex(knexfile.test);
+&nbsp;
+app.use(cors());
+// "scripts": {
+//   "start": "set NODE_ENV=prod&amp; node src/server.js",
+//   "lint": "eslint src/** test/** --fix",
+//   "secure-mode": "set NODE_ENV = test &amp; jest --watchAll --runInBand --verbose=true",
+//   "test": "set NODE_ENV = test &amp; jest  --coverage --runInBand --forceExit"
+// },
+&nbsp;
+// "scripts": {
+//   "start": "node src/server.js",
+//   "lint": "eslint src/** test/** --fix",
+//   "secure-mode": "jest --watchAll --runInBand --verbose=true",
+//   "test": "jest  --coverage --runInBand --forceExit"
+// },
+&nbsp;
+app.log = winston.createLogger({
+  level: 'debug',
+  transports: [
+    new winston.transports.Console({ format: winston.format.json({ space: 1 }) }),
+    new winston.transports.File({
+      filename: 'log/error.log',
+      level: 'warn',
+      format: winston.format.combine(winston.format.timestamp(), winston.format.json({ space: 1 })),
+    }),
+  ],
+});
+&nbsp;
+consign({ cwd: 'src', verbose: false })
+  .include('./config/passport.js')
+  .then('./config/middlewares.js')
+  .then('./services')
+  .then('./routes')
+  .then('./config/router.js')
+  .into(app);
+&nbsp;
+app.get('/', (req, res) =&gt; {
+  app.log.debug('passei por aqui');
+  res.status(200).send();
+});
+&nbsp;
+app.use((err, req, res, next) =&gt; {
+  const { name, message, stack } = err;
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (name === 'validationError') res.status(400).json({ error: message });
+  else <span class="cstat-no" title="statement not covered" >if (name === 'forbiddenError') <span class="cstat-no" title="statement not covered" >res.status(403).json({ error: message });</span></span>
+  else {
+    const id = <span class="cstat-no" title="statement not covered" >uuid();</span>
+<span class="cstat-no" title="statement not covered" >    app.log.error(name, message, stack);</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).json({ id, error: 'Erro do sistema ' });</span>
+  }
+  next(err);
+});
+&nbsp;
+module.exports = app;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jan 17 2022 21:44:23 GMT+0000 (Hora padrão da Europa Ocidental)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

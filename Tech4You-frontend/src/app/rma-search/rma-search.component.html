@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+  <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-item active">
+      <div class="carousel-container">
+        <h2 class="animate__animated animate__fadeInDown">Pesquisar Assistência</h2>
+        <p class="animate__animated fanimate__adeInUp">
+          Para acompanhar todo o processo apenas tem de inserir a referência da sua assistência.
+          A sua referência foi atribuída no ato da entrega do equipamento para efetuar reparação.</p>
+        <div action="#">
+          <input type="text" class="search" [(ngModel)]="search" />
+          <a href="">Esqueceu-se do seu RMA? Contacte-nos.</a>
+        </div>
+        <button class="btn-get-started estiloTexto" (click)=detail(search)>Pesquisar</button>
+
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+
+<ng-template #modalData let-modal>
+  <div class="modal-header">
+    <h6 class="modal-title">Erro de Pesquisa</h6>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Por favor insira uma referência válida</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Fechar</button>
+  </div>
+</ng-template>
